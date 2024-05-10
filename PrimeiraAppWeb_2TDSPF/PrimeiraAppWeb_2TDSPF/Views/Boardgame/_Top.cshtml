@@ -1,0 +1,16 @@
+@model IEnumerable<PrimeiraAppWeb_2TDSPF.Models.Boardgame>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Top Games
+    </div>
+    <ul class="list-group list-group-flush">
+        @foreach (var boardgame in Model.Reverse())
+        {
+            <li class="list-group-item">
+                <a asp-action="Details" asp-route-id="@boardgame.Id">@boardgame.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
