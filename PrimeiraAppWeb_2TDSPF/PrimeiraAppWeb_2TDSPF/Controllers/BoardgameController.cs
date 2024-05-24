@@ -42,6 +42,17 @@ namespace PrimeiraAppWeb_2TDSPF.Controllers
 
             return View(boardgame);
         }
+        
+        // Mantemos o mesmo exemplo de controller anterior, adequado para resposta a chamadas HTTP GET
+        [HttpGet]
+        public async Task<ActionResult> TopRatedGames()
+        {
+            var games = await _context.Boardgames
+                .OrderByDescending(g => g.Id)
+                .Take(1)
+                .ToListAsync();
+            return PartialView("_Top", games);
+        }
 
         // GET: Boardgame/Create
         public IActionResult Create()

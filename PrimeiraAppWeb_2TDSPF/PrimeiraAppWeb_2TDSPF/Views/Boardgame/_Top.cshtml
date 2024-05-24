@@ -5,7 +5,7 @@
         Top Games
     </div>
     <ul class="list-group list-group-flush">
-        @foreach (var boardgame in Model.Reverse())
+        @foreach (var boardgame in Model)
         {
             <li class="list-group-item">
                 <a asp-action="Details" asp-route-id="@boardgame.Id">@boardgame.Name</a>

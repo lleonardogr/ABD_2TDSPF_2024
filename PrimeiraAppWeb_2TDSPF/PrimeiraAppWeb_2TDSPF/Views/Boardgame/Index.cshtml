@@ -6,7 +6,19 @@
 }
 <div class="row">
     <div class="col-md-3">
-        @Html.Partial("_Top", Model)
+        <div id="topGamesContainer">
+            <!-- O conteúdo do partial será carregado aqui -->
+        </div>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch('/Boardgame/TopRatedGames')
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('topGamesContainer').innerHTML = html;
+                    })
+                    .catch(error => console.error('Erro ao carregar os jogos mais bem avaliados:', error));
+            });
+        </script>
     </div>
     <div class="col-md-9">
         <h1>Index</h1>
